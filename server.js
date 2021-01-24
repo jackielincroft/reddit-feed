@@ -6,8 +6,26 @@ const bodyparser = require("body-parser");
 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
+app.use(express.static('public'));
+app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 
 const port = process.env.PORT || 3200;
+
+const errorHandler = (err, req, res) => {
+    if (err.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      res.status(403).send({ title: 'Server responded with an error', message: err.message });
+    } else if (err.request) {
+      // The request was made but no response was received
+      res.status(503).send({ title: 'Unable to communicate with server', message: err.message });
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      res.status(500).send({ title: 'An unexpected error occurred', message: err.message });
+    }
+  };
+
+
 
 var original = ""; // the original JSON from the reddit api
 var simplified = ""; // the simplified JSON to send out from our api
@@ -17,6 +35,7 @@ app.get("/api/:subreddit/:limit", (req, res) => {
     var request = require("request");
     var subreddit = req.params.subreddit;
     var limit = req.params.limit;
+    try {
     request('https://www.reddit.com/r/' + subreddit + '/.json?limit=' + limit, 
         function (error, response, body) {
             console.log('error: ', error);
@@ -41,11 +60,15 @@ app.get("/api/:subreddit/:limit", (req, res) => {
             console.log('original: ', original);
             console.log('simplified: ', simplified);
         });
+      }
+      catch (error) {
+        errorHandler(error, req, res);
+      }
 })
+
+// Redirect all traffic to index.html
+app.use((req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 app.listen(port, () => {
     console.log(`running at port ${port}`)
 });
-
-
-
