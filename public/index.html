@@ -9,22 +9,42 @@
 </head>
 <body>
   <div class="ui container">
-    <!-- Navigation Menu -->
-    <div class="ui four item inverted orange menu">
+
+    <!-- Header -->
+    <div class="ui item inverted teal menu">
       <div class="header item">
-        <i class="money bill alternate outline icon"></i>
-        Single Page App
+        Reddit Feed App
       </div>
-      <a class="item" href="/">
-        Currency Rates
-      </a>
-      <a class="item" href="/exchange">
-        Exchange Rates
-      </a>
-      <a class="item" href="/historical">
-        Historical Rates
-      </a>
     </div>
+
+    <!-- Parameter Inputs -->
+    <h1 class="ui header">Reddit Feed Browser</h1>
+    <hr>
+    <form class="ui form">
+        <div class="two fields">
+          <div class="field">
+            <label>Subreddit</label>
+            <input type="text" name="subreddit" id="subreddit" placeholder="Enter subreddit">
+          </div>
+          <div class="field">
+            <label>Number of Posts</label>
+            <input type="number" name="limit" id="limit" placeholder="Enter number of posts to show">
+          </div>
+        </div>
+        <div class="ui primary submit button">Go</div>
+        <div class="ui error message"></div>
+    </form>
+
+    <form action="http://localhost:3200/api" method="GET">
+      Subreddit: <input type="text" name="subreddit">  
+      <br>
+      Limit: <input type = "text" name="limit">
+      <br>
+      <input type = "submit" value = "Submit">
+   </form>
+
+   <div id="articles"></div>
+
     <!-- Error Template -->
     <script id="error-template" type="text/x-handlebars-template">
       <div class="ui {{color}} inverted segment" style="height:250px;">
@@ -38,25 +58,6 @@
         </h2>
       </div>
     </script>
-
-    <!-- Currency Rates Template -->
-    <script id="rates-template" type="text/x-handlebars-template">
-      <h1 class="ui header">Currency Rates</h1>
-      <hr>
-    </script>
-
-    <!-- Exchange Conversion Template -->
-    <script id="exchange-template" type="text/x-handlebars-template">
-      <h1 class="ui header">Exchange Conversion</h1>
-      <hr>
-    </script>
-
-    <!-- Historical Rates Template -->
-    <script id="historical-template" type="text/x-handlebars-template">
-      <h1 class="ui header">Historical Rates</h1>
-      <hr>
-    </script>
-
 
     <!-- Application Root -->
     <div id="app"></div>
