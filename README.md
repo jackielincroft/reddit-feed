@@ -2,6 +2,8 @@
 
 Coding challenge for Cisco Fall 2021 SWE Co-op – build a REST API that gets recent articles from a given subreddit, and display those recent articles in a simple UI.
 
+### NOTE: This challenge is unfortunately unfinished – for furthest progress, run "git checkout nodejs", to see the branch where the api runs (and can be hit using a tool like Postman) and the UI is in the process of being setup at localhost:3200
+
 ## Getting Started
 
 This project was built using Node.js, Express.js, and vanilla javascript and html for a simple single-page UI.
@@ -18,8 +20,7 @@ npm start
 
 ## API Specifications
 
-All source code for the REST API can be found in the [server.js] file.  There is only one main api route, since this application simply gets subreddit articles using the public reddit API.  This API route is used in the simple UI, or it can be accessed directly using a tool like Postman.
+All source code for the REST API can be found in the [server.js] file.  There is only one main api route, since this application simply gets subreddit articles using the public reddit API.  This API route is used in the simple UI, or it can be accessed directly using a tool like Postman.  When the app has been started with "npm start" command, use a tool like Postman to hit the url localhost:3200/api/:subreddit/:limit, to get a simplified json with the title and url for the given number of recent articles from the given subreddit.
 
 ### GET /api/:subreddit/:limit
 Gets recent reddit posts in a simplified JSON format (includes title and url).  The two parameters specify which subreddit to get recent posts from, and how many posts should be limited.
-
