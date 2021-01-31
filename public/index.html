@@ -31,18 +31,10 @@
             <input type="number" name="limit" id="limit" placeholder="Enter number of posts to show">
           </div>
         </div>
-        <div class="ui primary submit button">Go</div>
+        <input class="ui primary submit button" type="submit" value="Go">
         <div class="ui error message"></div>
     </form>
-
-    <form action="http://localhost:3200/api" method="GET">
-      Subreddit: <input type="text" name="subreddit">  
-      <br>
-      Limit: <input type = "text" name="limit">
-      <br>
-      <input type = "submit" value = "Submit">
-   </form>
-
+    
    <div id="articles"></div>
 
     <!-- Error Template -->
