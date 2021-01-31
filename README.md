@@ -2,7 +2,7 @@
 
 Coding challenge for Cisco Fall 2021 SWE Co-op – build a REST API that gets recent articles from a given subreddit, and display those recent articles in a simple UI.
 
-### NOTE: This challenge is unfortunately unfinished – for furthest progress, checkout the branch "nodejs", where the api runs (and can be hit using a tool like Postman) and the UI is in the process of being setup at localhost:3200
+### NOTE: This challenge is unfortunately unfinished – for furthest progress, run "git checkout nodejs", to see the branch where the api runs (and can be hit using a tool like Postman) and the UI is in the process of being setup at localhost:3200
 
 ## Getting Started
 
